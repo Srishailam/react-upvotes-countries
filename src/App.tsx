@@ -36,7 +36,7 @@ function App() {
   const [paginate, setPaginate] = React.useState(8);
 
   const request_headers = new Headers();
-  const api_key = "YJlp6Xrk9Zt9ZIliB8cO23TA8UzT7BAf0Q1iV45m";
+  const api_key = process.env.REACT_APP_API_KEY;
   request_headers.append("Authorization", `Bearer ${api_key}`);
   request_headers.append("Content-Type", "application/json");
 
@@ -120,7 +120,7 @@ function App() {
             aria-label="Filter Countries By Region">
             <option value="">Filter By Region</option>
             {filter_items.map((item) => (
-            <option value={item}>Filter By {item}</option>
+            <option value={item} key={item}>Filter By {item}</option>
             ))}
           </select>
           <span className="focus"></span>
